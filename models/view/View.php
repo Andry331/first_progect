@@ -4,10 +4,7 @@
     class View
     {
       protected $dataArray = [];
-      public function __construct()
-      {
-        // code...
-      }
+
       public function __get($var)
       {
         if (isset($this->dataArray[$var])) {
@@ -20,6 +17,10 @@
       }
       public function display($template)
       {
-        // code...
+        ob_start();
+        require sprintf ( '%s\..\..\view\%s' , __DIR__ , $template );
+        $bufTemp = ob_get_contents();
+        ob_end_clean();
+        return $bufTemp;
       }
     }

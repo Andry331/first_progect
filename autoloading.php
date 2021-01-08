@@ -1,5 +1,5 @@
 <?php
     function __autoload($className)
     {
-      require str_replace('\\', DIRECTORY_SEPARATOR, $className).'.php';
+      require __DIR__.str_replace('\\', DIRECTORY_SEPARATOR, $className).'.php';
     }
