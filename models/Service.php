@@ -1,9 +1,9 @@
 <?php
-    namespace models\service;
+    namespace models;
 
     use models\interfaces\PaidActionsInterface;
 
-    class Product extends \Model implements PaidActions
+    class Service extends \Model implements PaidActionsInterface
     {
       protected const TABLE = 'service';
       public int $service_id;

@@ -1,5 +1,5 @@
 <?php
-    namespace models\view;
+    namespace models;
 
     class View
     {
