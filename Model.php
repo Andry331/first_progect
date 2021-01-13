@@ -1,5 +1,5 @@
 <?php
-  use models\Db\Db;
+  use models\Db;
 
   abstract class Model
   {
@@ -7,7 +7,7 @@
 
     public static function findAll()
     {
-      $db = new Db();
+      $db = Db::instans();
       $sql = 'SELECT * FROM ' . static::TABLE;
       return $db->query($sql, static::class);
     }
