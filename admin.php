@@ -6,4 +6,6 @@
     use models\View;
 
     $index = new View;
-    echo $index->display('index.php');
+    $index->product = Product::findAll();
+    $index->service = Service::findAll();
+    echo $index->display('admin.php');

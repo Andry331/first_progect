@@ -5,20 +5,30 @@
     {
       protected $dataArray = [];
 
-      public function __get($var)
+      public function __get(string $name)
       {
-        if (isset($this->dataArray[$var])) {
-          return $this->dataArray[$var];
-        }
+          return $this->dataArray[$name];
       }
-      public function setData($name, $data)
+      public function __set(string $name, $value)
       {
-        $this->dataArray[$name] = $data;
+        $this->dataArray[$name] = $value;
       }
-      public function display($template)
+      public function __isset(string $name)
+      {
+        return isset($this->dataArray[$name]);
+      }
+      public function setData(string $name, $value)
+      {
+        $this->dataArray[$name] = $value;
+      }
+      public function display(string $template)
+      {
+        include sprintf ( '%s\..\template\%s' , __DIR__ , $template );
+      }
+      public function render($template)
       {
         ob_start();
-        require sprintf ( '%s\..\..\view\%s' , __DIR__ , $template );
+        require sprintf ( '%s\..\template\%s' , __DIR__ , $template );
         $bufTemp = ob_get_contents();
         ob_end_clean();
         return $bufTemp;
